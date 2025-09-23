@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İletişim – Selçuki</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body class="page">
+  <section class="hero hero-tight">
+    <h1>İletişim</h1>
+    <p class="muted">Bize ulaşmanın en hızlı yolları</p>
+    <div class="actions">
+      <a class="btn" id="btnCall" href="#">Ara</a>
+      <a class="btn outline btn-wa" id="btnWa" href="#">WhatsApp</a>
+      <a class="btn outline" id="btnMail" href="#">E‑posta</a>
+      <a class="btn outline" id="btnMap" href="#">Harita Aç</a>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div>
+      <div class="card">
+        <h2>İletişim Bilgileri</h2>
+        <ul class="list" id="contactList"></ul>
+      </div>
+    </div>
+    <div>
+      <div id="map" class="map" role="region" aria-label="Ofis haritası"></div>
+    </div>
+  </section>
+
+  <script src="../assets/js/company.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="../assets/js/map.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
