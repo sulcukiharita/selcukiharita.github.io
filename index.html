@@ -10,92 +10,177 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-:root{--bg:#fff;--ink:#111;--muted:#6b7280;--line:#e5e7eb;--accent:#000;--wa:#25D366;--gap:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+:root {
+  --bg:#fff;
+  --ink:#111;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --accent:#000;
+  --wa:#25D366;
+  --gap:18px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
 /* HEADER */
-.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:16px}
-.brand img{height:90px;width:auto}
-.menu{display:flex;gap:14px}
-.menu a{padding:8px 10px;border-radius:8px;font-weight:600}
-.menu a:hover{background:var(--line)}
-@media(max-width:700px){.brand img{height:70px}.menu{gap:8px;font-size:14px}}
+.header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;gap:16px;
+}
+.brand img{height:90px;width:auto;}
+.menu{display:flex;gap:14px;}
+.menu a{padding:8px 10px;border-radius:8px;font-weight:600;}
+.menu a:hover{background:var(--line);}
+@media(max-width:700px){
+  .brand img{height:70px;}
+  .menu{gap:8px;font-size:14px;}
+}
 
-/* HERO – görüntüyü bozmadan yatay full cover */
-.hero{
+/* HERO (relative hizalı sol alt butonlu) */
+.hero {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;      /* içerik alt hizalı */
+  align-items: flex-start;        /* sola hizalı */
   overflow: hidden;
-  border-bottom: 1px solid var (--line);
+  border-bottom: 1px solid var(--line);
   background: #fff;
-
+  padding: 0 3% 5% 3%;           /* sol ve alt boşluk */
 }
-.hero img.bg{
+.hero img.bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-} /* yatay tam dolum, oran korunur */
-
-@media (max-width: 768px) {
-  .hero {
-    aspect-ratio: 4/3;
-  }
+  z-index: 0;
 }
-.hero .inner{
+.hero .inner {
   position: relative;
   z-index: 1;
-  text-align: center;
-  padding: 40px 16px;
-  max-width: 1000px;
+  width: 100%;
+  color: #111;
+  text-align: left;
 }
-.hero h1{margin:0 0 10px;font-size:clamp(22px,5vw,44px);font-weight:800;color:var(--ink)}
-.hero p{margin:0 auto 18px;max-width:900px;color:#222;font-size:clamp(15px,2.6vw,18px)}
-.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;transition:.2s}
-.btn:hover{opacity:.9}
+.hero .inner h1 {
+  margin: 0;
+  font-size: clamp(22px, 5vw, 44px);
+  font-weight: 800;
+}
+.hero .inner p {
+  max-width: 600px;
+  margin: 10px 0 30px 0;
+  font-size: clamp(14px, 2.5vw, 18px);
+}
+/* Buton section’a göre relative */
+.btn-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+.hero-btn {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transition: .2s;
+  padding: clamp(8px, 2vw, 14px) clamp(12px, 3vw, 20px);
+  font-size: clamp(12px, 2.2vw, 18px);
+}
+.hero-btn:hover { opacity: .9; }
 
-/* SECTIONS */
-section{padding:42px 16px}h2{margin:0 0 16px;font-size:clamp(20px,4vw,28px)}
-.grid{display:flex;flex-wrap:wrap;gap:var(--gap)}
-.grid>.col{flex:1 1 calc(33.333% - var(--gap));min-width:280px}
-@media(max-width:980px){.grid>.col{flex-basis:calc(50% - var(--gap))}}
-@media(max-width:620px){.grid>.col{flex-basis:100%}}
+@media (max-width:768px) {
+  .hero { aspect-ratio: 4/3; padding-bottom: 8%; }
+}
+
+/* SECTION BASE */
+section{padding:42px 16px;}
+h2{margin:0 0 16px;font-size:clamp(20px,4vw,28px);}
+.grid{display:flex;flex-wrap:wrap;gap:var(--gap);}
+.grid>.col{flex:1 1 calc(33.333% - var(--gap));min-width:280px;}
+@media(max-width:980px){.grid>.col{flex-basis:calc(50% - var(--gap));}}
+@media(max-width:620px){.grid>.col{flex-basis:100%;}}
 
 /* CARD */
-.card{border:1px solid var(--line);border-radius:14px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
-.card .media{height:190px;overflow:hidden}
-.card .media img{width:100%;height:100%;object-fit:cover}
-.card .body{padding:14px}
-.card h3{margin:0 0 6px;font-size:18px}
-ul.b{margin:0;padding-left:18px}.b li{margin:6px 0;color:var(--muted)}
+.card{border:1px solid var(--line);border-radius:14px;background:#fff;display:flex;flex-direction:column;overflow:hidden;}
+.card .media{height:190px;overflow:hidden;}
+.card .media img{width:100%;height:100%;object-fit:cover;}
+.card .body{padding:14px;}
+.card h3{margin:0 0 6px;font-size:18px;}
+ul.b{margin:0;padding-left:18px;}
+.b li{margin:6px 0;color:var(--muted);}
 
 /* GALLERY */
-.gallery{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.gallery .sq{flex:1 1 calc(20% - 12px);min-width:160px;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.gallery .sq img{width:100%;height:100%;object-fit:cover}
-@media(max-width:900px){.gallery .sq{flex:1 1 calc(33.333% - 12px)}}
-@media(max-width:600px){.gallery .sq{flex:1 1 calc(50% - 12px)}}
+.gallery{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.gallery .sq{flex:1 1 calc(20% - 12px);min-width:160px;aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.gallery .sq img{width:100%;height:100%;object-fit:cover;}
+@media(max-width:900px){.gallery .sq{flex:1 1 calc(33.333% - 12px);}}
+@media(max-width:600px){.gallery .sq{flex:1 1 calc(50% - 12px);}}
 
 /* CONTACT */
-.contact{background:#fafafa;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.wrap{display:flex;flex-wrap:wrap;gap:var(--gap)}
-.box{flex:1 1 420px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:16px}
-.meta{display:grid;gap:8px;color:var(--muted)}.meta b{color:var(--ink)}
-iframe{width:100%;height:360px;border:0;border-radius:12px}
+.contact{background:#fafafa;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.wrap{display:flex;flex-wrap:wrap;gap:var(--gap);}
+.box{flex:1 1 420px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:16px;}
+.meta{display:grid;gap:8px;color:var(--muted);}
+.meta b{color:var(--ink);}
+iframe{width:100%;height:360px;border:0;border-radius:12px;}
 
 /* FOOTER & WA */
-footer{padding:18px 16px;color:var(--muted);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.wa{position:fixed;right:16px;bottom:18px;height:56px;width:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:60}
-.wa svg{width:28px;height:28px;fill:#fff}
+footer{padding:18px 16px;color:var(--muted);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.wa{position:fixed;right:16px;bottom:18px;height:56px;width:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:60;}
+.wa svg{width:28px;height:28px;fill:#fff;}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: .75rem 1.2rem;
+  line-height: 1;
+  transition: .2s ease;
+  text-decoration: none;
+}
+/* WhatsApp butonu */
+.btn--wa {
+  background-color: #25D366;   /* WhatsApp yeşili */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+.btn--wa:hover { background-color: #1ebe5b; }
+
+/* Haritada Aç butonu */
+.btn--map {
+  background: #fff;
+  color: #000;
+  border: 1px solid var(--line);
+}
+.btn--map:hover { background: #f5f5f5; }
+
+/* İkonlar */
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+  display: block;
+}
+
 </style>
 </head>
 <body>
@@ -111,11 +196,12 @@ footer{padding:18px 16px;color:var(--muted);border-top:1px solid var(--line);dis
   </div>
 </header>
 
-<!-- Yeni geniş banner görseli: aynı klasörde 'selcuki-hero-banner.png' -->
 <section class="hero" id="home">
-  <img class="bg" src="selcuki-hero.jpg" alt="Selçuki Harita Mühendislik Banner">
+  <img class="bg" src="selcuki-hero.jpg" alt="Selçuki Harita Mühendislik">
   <div class="inner">
-    <a class="btn" id="btnTeklif" href="#">Teklif Al</a>
+    <div class="btn-wrap">
+      <a class="btn hero-btn" id="btnTeklif" href="#">Teklif Al</a>
+    </div>
   </div>
 </section>
 
@@ -145,12 +231,26 @@ footer{padding:18px 16px;color:var(--muted);border-top:1px solid var(--line);dis
       <div class="meta">
         <div><b>Adres</b> Sahabiye Mahallesi, İstasyon Caddesi, Ak İş Merkezi, Kat:4 No:16 Kocasinan/KAYSERİ</div>
         <div><b>Telefon</b> <a id="tel" href="tel:+905536605992">+90 553 660 59 92</a></div>
-		<div><b>Telefon</b> <a id="tel" >+90 553 626 00 66</a></div>
+		<div><b>Telefon</b> <a id="tel">+90 553 626 00 66</a></div>
         <div><b>E-posta</b> <a id="mail" href="selcukharita@gmail.com">selcukharita@gmail.com</a></div>
         <div><b>Çalışma Saatleri</b> Hafta içi 09:00–18:00</div>
         <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" id="btnWa" href="#">WhatsApp</a>
-          <a class="btn" id="btnMap" href="#" style="background:#fff;color:#000;border:1px solid var(--line)">Haritada Aç</a>
+			<a class="btn btn--wa" id="btnWa" href="#">
+			  <!-- WhatsApp ikonu -->
+			  <svg viewBox="0 0 32 32" aria-hidden="true">
+				<path fill="currentColor" d="M19.1 17.6c-.3-.1-1-.4-1.1-.4s-.2-.1-.3.1-.3.4-.4.5c-.1.1-.2.1-.3 0-.1-.1-.6-.2-1.1-.6-.4-.3-.8-.9-.9-1-.1-.1 0-.2.1-.3.1-.1.3-.3.3-.4.1-.1 0-.2 0-.3s-.3-1-.5-1.4c-.1-.4-.2-.3-.3-.3h-.3c-.1 0-.3.1-.4.2-.1.1-.5.5-.5 1.2s.5 1.4.6 1.5c.1.2 1.1 1.8 2.6 2.4 1.6.6 1.6.4 1.9.4.3 0 1-.4 1.1-.8.1-.4.1-.7.1-.8 0-.1-.1-.1-.3-.2zM16 3a13 13 0 0 0-11 19.7L4 29l6.5-1.7A13 13 0 1 0 16 3z"/>
+			  </svg>
+			  <span>WhatsApp</span>
+			</a>
+			<a class="btn btn--map" id="btnMap" href="#">
+			  <!-- Harita ikonu -->
+			  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+				   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z"></path>
+				<circle cx="12" cy="10" r="3"></circle>
+			  </svg>
+			  <span>Haritada Aç</span>
+			</a>
         </div>
       </div>
     </div>
@@ -170,7 +270,7 @@ footer{padding:18px 16px;color:var(--muted);border-top:1px solid var(--line);dis
 </a>
 
 <script>
-const COMPANY={phone:"+905555555555",lat:38.72464,lng:35.48616};
+const COMPANY={phone:"+905536605992",lat:38.72467,lng:35.48616};
 document.getElementById('y').textContent=new Date().getFullYear();
 
 function openWa(){
